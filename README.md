@@ -17,6 +17,19 @@ ARIA 系統結合水利署河川資料與消防署避難所資料，建立多級
 
 ---
 
+## 🌐 GitHub Pages 部署
+
+互動式風險地圖已發布到 GitHub Pages，可透過以下連結直接存取：
+
+**[https://hankc0215.github.io/HW3_Automated-Regional-Impact-Auditor-ARIA-/](https://hankc0215.github.io/HW3_Automated-Regional-Impact-Auditor-ARIA-/)**
+
+### 部署說明
+- 使用 `gh-pages` 分支進行部署
+- 自動將 `interactive_risk_map_light.html` 設為首頁
+- 支援互動式地圖所有功能（縮放、圖層控制、彈出視窗等）
+
+---
+
 ## 🗂️ 專案結構
 
 ```
@@ -397,18 +410,7 @@ jupyter notebook ARIA.ipynb
 | 風險地圖品質（互動 + 靜態） | 15% | ✅ 完成 |
 | Git workflow + .env + Markdown + AI 診斷日誌 | 20% | ✅ 完成 |
 
----
 
-## 🌐 GitHub Pages 部署
-
-互動式風險地圖已發布到 GitHub Pages，可透過以下連結直接存取：
-
-**[https://hankc0215.github.io/HW3_Automated-Regional-Impact-Auditor-ARIA-/](https://hankc0215.github.io/HW3_Automated-Regional-Impact-Auditor-ARIA-/)**
-
-### 部署說明
-- 使用 `gh-pages` 分支進行部署
-- 自動將 `interactive_risk_map_light.html` 設為首頁
-- 支援互動式地圖所有功能（縮放、圖層控制、彈出視窗等）
 
 ---
 
@@ -422,20 +424,6 @@ jupyter notebook ARIA.ipynb
 
 ---
 
-## 📄 授權
-
-本專案採用 MIT 授權 - 詳見 [LICENSE](LICENSE) 檔案
-
----
-
-## 📞 聯絡方式
-
-如有問題或建議，請透過以下方式聯絡：
-
-- 建立 [Issue](https://github.com/your-username/ARIA/issues)
-- 發送 Email 至 your-email@example.com
-
----
 
 *"The buffer renders. The join completes. But is the city's shelter capacity enough to evacuate the flood zone?"*
 
