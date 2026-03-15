@@ -380,7 +380,8 @@ jupyter notebook ARIA.ipynb
 
 ### 3. 查看結果
 
-- 開啟 `interactive_risk_map.html` 查看互動式地圖
+- 🌐 **[線上互動式地圖](https://hankc0215.github.io/HW3_Automated-Regional-Impact-Auditor-ARIA-/)** - GitHub Pages 版本
+- 開啟 `interactive_risk_map_light.html` 查看本地互動式地圖
 - 查看 `analysis_results/` 目錄中的統計結果
 - 檢視 `risk_map.png` 靜態地圖
 
@@ -395,6 +396,19 @@ jupyter notebook ARIA.ipynb
 | 收容量缺口分析 + 分區統計 | 20% | ✅ 完成 |
 | 風險地圖品質（互動 + 靜態） | 15% | ✅ 完成 |
 | Git workflow + .env + Markdown + AI 診斷日誌 | 20% | ✅ 完成 |
+
+---
+
+## 🌐 GitHub Pages 部署
+
+互動式風險地圖已發布到 GitHub Pages，可透過以下連結直接存取：
+
+**[https://hankc0215.github.io/HW3_Automated-Regional-Impact-Auditor-ARIA-/](https://hankc0215.github.io/HW3_Automated-Regional-Impact-Auditor-ARIA-/)**
+
+### 部署說明
+- 使用 `gh-pages` 分支進行部署
+- 自動將 `interactive_risk_map_light.html` 設為首頁
+- 支援互動式地圖所有功能（縮放、圖層控制、彈出視窗等）
 
 ---
 
