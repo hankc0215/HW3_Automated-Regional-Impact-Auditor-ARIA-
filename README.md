@@ -4,6 +4,13 @@
 
 升級第三週 ARIA 系統，整合內政部 20m DEM 進行全面地形風險評估，結合高程與坡度分析與現有河川緩衝區風險等級。
 
+
+## 🌐 GitHub Pages 部署
+
+互動式風險地圖已發布到 GitHub Pages，可透過以下連結直接存取：
+[https://hankc0215.github.io/ARIA/aria-v2/](https://hankc0215.github.io/ARIA/aria-v2/)
+
+
 ## 📋 專案概述
 
 ARIA v2.0 是一個進階地理空間風險評估系統，結合：
