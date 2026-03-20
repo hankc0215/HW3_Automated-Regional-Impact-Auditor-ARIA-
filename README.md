@@ -20,8 +20,8 @@ ARIA 系統結合水利署河川資料與消防署避難所資料，建立多級
 ## 🌐 GitHub Pages 部署
 
 互動式風險地圖已發布到 GitHub Pages，可透過以下連結直接存取：
+[https://hankc0215.github.io/ARIA/](https://hankc0215.github.io/ARIA/)
 
-**[[https://hankc0215.github.io/HW3_Automated-Regional-Impact-Auditor-ARIA-](https://hankc0215.github.io/ARIA/)/]([https://hankc0215.github.io/HW3_Automated-Regional-Impact-Auditor-ARIA-](https://hankc0215.github.io/ARIA/)/)**
 
 ### 部署說明
 - 使用 `gh-pages` 分支進行部署
