@@ -52,14 +52,6 @@ REQUIRED_PACKAGES = [
 ]
 ```
 
-### 環境變數 (.env)
-```bash
-# ARIA v2.0 設定閾值
-SLOPE_THRESHOLD=30      # 高風險坡度閾值（度）
-ELEVATION_LOW=50        # 低高程閾值（公尺）
-BUFFER_HIGH=500         # 避難所緩衝區半徑（公尺）
-TARGET_COUNTY=花蓮縣    # 分析目標縣市
-```
 
 ## 📊 方法論
 
