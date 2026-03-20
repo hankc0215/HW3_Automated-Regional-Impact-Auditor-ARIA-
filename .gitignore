@@ -47,11 +47,11 @@ Thumbs.db
 *.swp
 *.swo
 
-# Output files
+# Output files (allow HTML for GitHub Pages)
 outputs/*.png
-outputs/*.html
 outputs/*.csv
 outputs/*.json
+# outputs/*.html  # Commented out to allow GitHub Pages
 
 # Temporary files
 *.tmp
