@@ -1,0 +1,11 @@
+pandas
+geopandas
+numpy
+folium
+python-dotenv
+requests
+matplotlib
+seaborn
+scikit-learn
+jupyter
+ipykernel
