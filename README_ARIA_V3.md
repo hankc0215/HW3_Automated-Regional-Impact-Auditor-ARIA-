@@ -85,6 +85,35 @@ The notebook contains cells for:
 - Station markers with detailed information
 - Emergency commander recommendations
 
+## GitHub Pages Deployment
+
+To deploy the interactive map to GitHub Pages for the ARIA_V3 branch:
+
+1. **Enable GitHub Pages**:
+   - Go to repository settings
+   - Scroll to "GitHub Pages" section
+   - Source: "Deploy from a branch"
+   - Branch: `ARIA_V3`
+   - Folder: `/root`
+   - Save
+
+2. **Alternative: GitHub Pages from docs folder**:
+   ```bash
+   # Create docs folder and copy HTML
+   mkdir docs
+   cp ARIA_v3_Fungwong.html docs/index.html
+   git add docs/
+   git commit -m "Add interactive map to docs folder"
+   git push origin ARIA_V3
+   ```
+   - Then enable GitHub Pages with source: `ARIA_V3/docs` folder
+
+3. **Access the deployed site**:
+   - If using root: `https://hankc0215.github.io/ARIA/`
+   - If using docs: `https://hankc0215.github.io/ARIA/ARIA_V3/`
+
+**Note**: This deployment is separate from the main project and won't affect the original master branch website.
+
 ## File Structure
 
 ```
