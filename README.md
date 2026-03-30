@@ -17,6 +17,11 @@
 - `ARIA_v3_Week5.ipynb`
 - `ARIA_v3_Fungwong.html`
 
+- ## 🌐 GitHub Pages 部署
+
+互動式風險地圖已發布到 GitHub Pages，可透過以下連結直接存取：
+[https://hankc0215.github.io/ARIA/](https://hankc0215.github.io/ARIA/)
+
 ---
 
 ## 一、專案目標
