@@ -1,402 +1,338 @@
-# ARIA V4: Rainfall Event Interpolation Analysis
+# Week 6 空間預測對決專案說明
 
-This project implements a comprehensive rainfall spatial interpolation workflow comparing four different methods for weather event analysis in Taiwan.
-
-## 🌟 Project Overview
-
-This repository contains the complete workflow for Week 6 rainfall interpolation analysis, including data preprocessing, spatial interpolation using multiple methods, and comprehensive visualization outputs.
-
-**Key Features:**
-- Four interpolation methods comparison (Nearest Neighbor, IDW, Ordinary Kriging, Random Forest)
-- Typhoon and heavy rainfall event analysis
-- Variogram modeling and uncertainty quantification
-- GeoTIFF export for GIS applications
-- Comprehensive visualization and statistical analysis
+本專案包含兩份主要 Notebook，用於整理 2022 年雨量事件資料，並完成 Week 6 作業中的空間預測比較分析。
 
 ---
 
-## 📁 Project Structure
+## 一、專案內容
 
-### Core Analysis Files
+本專案的核心目標是比較不同降雨事件下的空間內插結果，並分析各方法在不同情境中的表現差異。  
+目前流程分成兩個階段：
 
-#### 1. `prework_prepare_rainfall_data.ipynb`
-**Data preprocessing notebook** that prepares raw rainfall data for spatial analysis.
-
-**Functions:**
-- Station metadata extraction and processing
-- 2022 rainfall CSV data ingestion
-- Data filtering for Yilan and Hualien counties
-- Quality control and data validation
-- Export of prepared datasets
-
-#### 2. `Week6_Shootout_v2.ipynb`
-**Main analysis notebook** implementing spatial interpolation methods.
-
-**Functions:**
-- Event time selection and analysis
-- Four spatial interpolation methods
-- Variogram modeling and comparison
-- Sigma map generation
-- GeoTIFF export functionality
-
-### Data Directories
-
-#### `data/`
-- `County/`: Administrative boundary shapefiles (TWD97 EPSG:3826)
-
-#### `prework_outputs/`
-- Processed rainfall data for multiple dates
-- Station metadata files
-- Quality-controlled datasets
-- Summary statistics
-
-#### `week6_outputs/`
-- Generated GeoTIFF files
-- Analysis results and visualizations
-
-#### `2022/`
-- Raw rainfall data CSV files from CoLife platform
-- Daily rainfall measurements across Taiwan
+1. **前處理（prework）**
+2. **主分析（shootout）**
 
 ---
 
-## 🔬 Analysis Workflow
+## 二、主要檔案
 
-### Phase 1: Data Preprocessing
+### 1. `prework_prepare_rainfall_data.ipynb`
+前處理 Notebook，負責整理原始資料，建立可供主分析直接使用的 prepared files。
 
-#### Step 1. Station Metadata Creation
-Extract station information from `fungwong_202511.json` to create comprehensive metadata:
-
-- `station_id`: Unique station identifier
-- `station_name`: Station name in Chinese
-- `county`: Administrative county
-- `town`: Administrative township
-- `lat`: Latitude (WGS84)
-- `lon`: Longitude (WGS84)
-
-This metadata serves as the reference table for merging with 2022 rainfall CSV data.
-
-#### Step 2. Raw Data Ingestion
-Read daily rainfall CSV files from 2022, focusing on key events:
-
-- **Typhoon Muifa**: `20220911`–`20220914`
-- **1029 Heavy Rainfall**: `20221028`–`20221031`
-
-**Key Data Fields:**
-- `station_id`: Station identifier
-- `obsTime`: Observation timestamp
-- `ELEV`: Station elevation (m)
-- `RAIN`: Instantaneous rainfall (mm)
-- `MIN_10`: 10-minute cumulative rainfall
-- `HOUR_3`: 3-hour cumulative rainfall
-- `HOUR_6`: 6-hour cumulative rainfall
-- `HOUR_12`: 12-hour cumulative rainfall
-- `HOUR_24`: 24-hour cumulative rainfall
-- `NOW`: Current accumulated rainfall
-
-#### Step 3. Data Integration
-Merge rainfall data with station metadata using `station_id` to add:
-- Station names and locations
-- Administrative boundaries
-- Geographic coordinates
-
-#### Step 4. Spatial Filtering
-Filter data to include only target counties:
-- **Yilan County** (宜蘭縣)
-- **Hualien County** (花蓮縣)
-
-Remove invalid values:
-- `-998` (missing data indicator)
-- `0` (no rainfall records)
-
-#### Step 5. Export Prepared Data
-Preprocessing notebook outputs:
-- `station_metadata.csv/json`: Station reference data
-- Daily merged datasets (CSV/JSON)
-- Filtered Yilan+Hualien valid rainfall data
-- `prework_summary.csv/json`: Processing statistics
-
-### Phase 2: Spatial Interpolation Analysis
-
-#### Step 1. Load Prepared Data
-Read processed datasets from `prework_outputs/` directory for specified dates.
-
-#### Step 2. Temporal Analysis
-Generate time-series summaries for each event:
-- Active station count per timestamp
-- Mean rainfall statistics
-- Maximum rainfall intensity
-- Standard deviation analysis
-
-Used to select representative event moments for spatial analysis.
-
-#### Step 3. Event Time Selection
-Choose optimal analysis timestamps:
-- **Typhoon Muifa**: Peak rainfall moment
-- **1029 Heavy Rainfall**: Maximum intensity period
-
-#### Step 4. Coordinate Transformation
-Convert data to GeoDataFrame and project to:
-- **EPSG:3826** (TWD97)
-- Generate `easting` and `northing` coordinates for spatial interpolation
-
-#### Step 5. Interpolation Methods Comparison
-Implement and compare four spatial interpolation methods:
-
-1. **Nearest Neighbor**: Simple proximity-based interpolation
-2. **Inverse Distance Weighting (IDW)**: Distance-weighted averaging
-3. **Ordinary Kriging**: Geostatistical interpolation with variogram modeling
-4. **Random Forest**: Machine learning-based spatial prediction
-
-#### Step 6. Variogram Modeling
-Test multiple variogram models for optimal kriging:
-- `spherical`: Traditional spherical variogram
-- `exponential`: Exponential decay model
-- Select best-fitting model based on statistical criteria
-
-#### Step 7. Visualization Outputs
-Generate comprehensive analysis visualizations:
-- Rainfall distribution maps for both events
-- 2×2 method comparison plots
-- Kriging vs. Random Forest difference maps
-- Uncertainty (sigma) maps
-- Variogram model comparison tables
-- Statistical interpretation summaries
-
-#### Step 8. GIS Export
-Export raster outputs (default: Event 1):
-- `kriging_rainfall.tif`: Kriging-interpolated rainfall
-- `kriging_variance.tif`: Kriging uncertainty estimates
-- `rf_rainfall.tif`: Random Forest predictions
+### 2. `Week6_Shootout_v2.ipynb`
+主分析 Notebook，負責挑選事件時刻、執行空間內插、比較不同方法、繪製 Sigma Map，並輸出 GeoTIFF。
 
 ---
 
-## 📋 Requirements
+## 三、整體流程
 
-### Input Data
+### Step 1：建立測站 metadata
+使用 `fungwong_202511.json` 中的測站資訊建立測站對照表，欄位包括：
 
-#### Essential Files
-- **`fungwong_202511.json`**: Station metadata reference
-- **2022 Rainfall CSVs**: Daily rainfall data from CoLife platform
-  - `rain_20220911.csv` through `rain_20220914.csv` (Typhoon Muifa)
-  - `rain_20221028.csv` through `rain_20221031.csv` (1029 Heavy Rainfall)
+- `station_id`
+- `station_name`
+- `county`
+- `town`
+- `lat`
+- `lon`
 
-#### Optional Data
-- **Administrative Boundaries**: County shapefiles for base mapping
-  - `COUNTY_MOI_1090820.shp` (TWD97 EPSG:3826)
-
-### Software Requirements
-
-#### Python Environment
-```bash
-pip install pandas numpy geopandas matplotlib scipy scikit-learn pykrige rasterio
-```
-
-**Required Packages:**
-- `pandas`: Data manipulation and analysis
-- `numpy`: Numerical computing
-- `geopandas`: Geospatial data processing
-- `matplotlib`: Data visualization
-- `scipy`: Scientific computing (interpolation)
-- `scikit-learn`: Machine learning (Random Forest)
-- `pykrige`: Kriging interpolation
-- `rasterio`: raster file I/O
+這份 metadata 主要用來補足 2022 年雨量 CSV 中缺少的測站座標與縣市資訊。
 
 ---
 
-## 🚀 Getting Started
+### Step 2：讀取 2022 年雨量 CSV
+從 CoLife 下載並解壓後的每日雨量 CSV 中讀取候選日期資料，例如：
 
-### Step 1: Data Preprocessing
-Execute the preprocessing notebook:
-```bash
-jupyter notebook prework_prepare_rainfall_data.ipynb
-```
+#### 梅花颱風候選日
+- `20220911`
+- `20220912`
+- `20220913`
+- `20220914`
 
-**Verify Outputs:**
-- `prework_outputs/` directory created
-- Station metadata files generated
-- Processed rainfall datasets available
+#### 1029 豪雨候選日
+- `20221028`
+- `20221029`
+- `20221030`
+- `20221031`
 
-### Step 2: Main Analysis
-Run the main analysis notebook:
-```bash
-jupyter notebook Week6_Shootout_v2.ipynb
-```
+原始 CSV 主要欄位包括：
 
-**Verification Checklist:**
-- ✅ Successful data loading from prework outputs
-- ✅ Time series summaries generated
-- ✅ Event timestamps selected
-- ✅ Coordinate transformation to EPSG:3826
-- ✅ Four interpolation methods executed
-- ✅ Comparison visualizations created
-- ✅ Sigma maps generated
-- ✅ GeoTIFF files exported
+- `station_id`
+- `obsTime`
+- `ELEV`
+- `RAIN`
+- `MIN_10`
+- `HOUR_3`
+- `HOUR_6`
+- `HOUR_12`
+- `HOUR_24`
+- `NOW`
 
 ---
 
-## 📊 Output Directory Structure
+### Step 3：合併 metadata
+將每日雨量資料依 `station_id` 與測站 metadata 進行 merge，補上：
+
+- 測站名稱
+- 縣市
+- 鄉鎮市區
+- 經度
+- 緯度
+
+這一步完成後，雨量資料才具備後續空間分析所需的地理資訊。
+
+---
+
+### Step 4：篩選研究區與有效資料
+依作業需求，目前研究區限定為：
+
+- `宜蘭縣`
+- `花蓮縣`
+
+同時移除無效資料值：
+
+- `-998`
+- `0`
+
+這一步完成後，會得到可供主分析使用的「宜蘭＋花蓮有效雨量資料」。
+
+---
+
+### Step 5：輸出前處理成果
+前處理 Notebook 會輸出以下內容：
+
+#### 測站資料
+- `station_metadata.csv`
+- `station_metadata.json`
+
+#### 每個日期的完整 merge 結果
+- `rain_YYYYMMDD_merged.csv`
+- `rain_YYYYMMDD_merged.json`
+
+#### 每個日期的宜蘭＋花蓮有效資料
+- `rain_YYYYMMDD_yl_hl_valid.csv`
+- `rain_YYYYMMDD_yl_hl_valid.json`
+
+#### 前處理摘要表
+- `prework_summary.csv`
+- `prework_summary.json`
+
+---
+
+## 四、主分析 Notebook 功能
+
+`Week6_Shootout_v2.ipynb` 會讀取前處理輸出後的 prepared files，並完成後續分析。
+
+### Step 1：讀取 prework 輸出
+從 `prework_outputs/` 中讀取指定日期的 prepared CSV。
+
+---
+
+### Step 2：建立時間摘要表
+依每個 `obsTime` 統計：
+
+- 有效站數
+- 平均雨量
+- 最大雨量
+- 標準差
+
+用來判斷哪一個時刻最適合作為正式分析時間。
+
+---
+
+### Step 3：選定正式事件時刻
+為每個事件選出一個最具代表性的 `obsTime`，例如：
+
+- 梅花颱風的一個主要降雨高峰時刻
+- 1029 豪雨的一個主要降雨高峰時刻
+
+---
+
+### Step 4：轉為 GeoDataFrame 並投影
+將資料轉為 GeoDataFrame，並投影到：
+
+- `EPSG:3826`
+
+同時建立：
+
+- `easting`
+- `northing`
+
+供後續 Kriging、IDW、RF 等方法使用。
+
+---
+
+### Step 5：執行四種空間內插方法
+主分析 Notebook 目前比較以下四種方法：
+
+1. **Nearest Neighbor**
+2. **IDW**
+3. **Ordinary Kriging**
+4. **Random Forest**
+
+---
+
+### Step 6：Variogram 比較
+Kriging 會比較至少兩種 variogram 模型，例如：
+
+- `spherical`
+- `exponential`
+
+再選擇其中較適合的模型作為正式分析使用。
+
+---
+
+### Step 7：圖片輸出
+主分析 Notebook 會產出以下圖件：
+
+- 降雨分布圖
+- 四方法 2×2 比較圖
+- Kriging vs RF 差異圖
+- Sigma Map
+- Variogram summary table
+- Writing Area（作業文字撰寫區）
+
+---
+
+### Step 8：GeoTIFF 輸出
+主分析 Notebook 預設可輸出以下 raster 檔：
+
+- `kriging_rainfall.tif`
+- `kriging_variance.tif`
+- `rf_rainfall.tif`
+
+---
+
+## 五、必要輸入資料
+
+請先確認以下資料已準備完成。
+
+### 1. 測站 metadata 來源
+- `fungwong_202511.json`
+
+### 2. 2022 年每日雨量 CSV
+需先從 CoLife 日資料 ZIP 解壓後取得，例如：
+
+- `rain_20220911.csv`
+- `rain_20220912.csv`
+- `rain_20220913.csv`
+- `rain_20220914.csv`
+- `rain_20221028.csv`
+- `rain_20221029.csv`
+- `rain_20221030.csv`
+- `rain_20221031.csv`
+
+### 3. 縣市界底圖（選用）
+如果要在圖上疊加縣市界，可使用：
+
+- `COUNTY_MOI_1090820.shp`
+
+---
+
+## 六、輸出資料夾說明
 
 ### `prework_outputs/`
-```
-prework_outputs/
-├── station_metadata.csv          # Station reference data
-├── station_metadata.json         # Station reference (JSON)
-├── prework_summary.csv           # Processing statistics
-├── prework_summary.json          # Processing statistics (JSON)
-├── 20220911/                     # Typhoon Muifa data
-│   ├── rain_20220911_merged.csv
-│   ├── rain_20220911_yl_hl_valid.csv
-│   └── ...
-└── 20221029/                     # 1029 Heavy Rainfall data
-    ├── rain_20221029_merged.csv
-    ├── rain_20221029_yl_hl_valid.csv
-    └── ...
-```
+前處理資料夾，內容包括：
+
+- 測站 metadata
+- 每日 merged 資料
+- 宜蘭／花蓮有效資料
+- prework summary
 
 ### `week6_outputs/`
-```
-week6_outputs/
-├── kriging_rainfall.tif          # Kriging interpolation result
-├── kriging_variance.tif           # Kriging uncertainty estimates
-└── rf_rainfall.tif               # Random Forest predictions
-```
+主分析輸出資料夾，內容包括：
+
+- GeoTIFF 檔案
+- 可自行擴充存放圖片輸出
 
 ---
 
-## ⚠️ Important Notes
+## 七、建議執行順序
 
-### Data Quality Considerations
-1. **Station ID Matching**: Not all `station_id` values perfectly match metadata, but current matching rate is sufficient for analysis.
-2. **Rainfall Field Selection**: Recommend using cumulative rainfall fields for stability:
-   - `HOUR_3`: 3-hour cumulative
-   - `HOUR_6`: 6-hour cumulative
-   Rather than instantaneous `RAIN` values.
-3. **Negative Values**: Kriging may produce negative values; clip to 0 for visualization.
-4. **Color Scale Consistency**: Use consistent color ranges across all four method comparisons.
-5. **Base Map Projection**: Ensure administrative boundaries are projected to EPSG:3826 for overlay.
+### 第一步：先執行前處理
+先執行：
 
-### Performance Considerations
-- Large JSON files (>50MB) may trigger GitHub warnings but function correctly
-- Memory usage increases with grid resolution; adjust `GRID_RES` parameter as needed
-- Random Forest cross-validation can be computationally intensive
+- `prework_prepare_rainfall_data.ipynb`
+
+確認成功產出：
+
+- `prework_outputs/`
 
 ---
 
-## 🎯 Applications
+### 第二步：再執行主分析
+再執行：
 
-This workflow is suitable for various research and operational applications:
+- `Week6_Shootout_v2.ipynb`
 
-### Academic Research
-- Comparative analysis of spatial interpolation methods
-- Typhoon vs. heavy rainfall event characterization
-- Rainfall field uncertainty quantification
-- Topography-rainfall relationship studies
+並確認下列步驟正常：
 
-### Operational Applications
-- Real-time rainfall mapping systems
-- Emergency response decision support
-- Flood risk assessment
-- Agricultural planning
-- Water resource management
-
-### Integration Opportunities
-- Shelter risk assessment systems
-- Disaster early warning platforms
-- Climate impact analysis
-- GIS-based decision support tools
+- 成功讀取 prepared CSV
+- 成功建立時間摘要表
+- 成功選定正式事件時刻
+- 成功轉換為 EPSG:3826
+- 成功完成四種內插
+- 成功繪製比較圖與 Sigma Map
+- 成功輸出 GeoTIFF
 
 ---
 
-## 📚 File Inventory
+## 八、套件需求
 
-### Core Analysis Files
-- `prework_prepare_rainfall_data.ipynb` - Data preprocessing workflow
-- `Week6_Shootout_v2.ipynb` - Main spatial interpolation analysis
-- `Homework-Week6.md` - Assignment specifications
+建議 Python 環境包含以下套件：
 
-### Data Files
-- `fungwong_202511.json` - Station metadata reference
-- `2022/` - Raw rainfall CSV files
-- `data/County/` - Administrative boundary shapefiles
-
-### Output Files
-- `prework_outputs/` - Processed datasets and metadata
-- `week6_outputs/` - Analysis results and GeoTIFF exports
+- `pandas`
+- `numpy`
+- `geopandas`
+- `matplotlib`
+- `scipy`
+- `scikit-learn`
+- `pykrige`
+- `rasterio`
 
 ---
 
-## 🔧 Customization
+## 九、注意事項
 
-### Event Selection
-Modify date parameters in the notebooks to analyze different rainfall events:
-
-```python
-# Event folders from prework outputs
-EVENT1_DATE = "20220912"   # Typhoon Muifa candidate
-EVENT2_DATE = "20221029"   # 1029 heavy rainfall candidate
-```
-
-### Interpolation Parameters
-Adjust method-specific parameters:
-
-```python
-# Random Forest parameters
-RF_N_ESTIMATORS = 200
-RF_MIN_SAMPLES_LEAF = 3
-
-# Grid resolution
-GRID_RES = 1000  # meters
-```
-
-### Variogram Models
-Test additional variogram models beyond spherical and exponential:
-- `gaussian`
-- `linear`
-- `power`
+1. `station_id` 並不是 100% 都能與 metadata 成功對上，但目前對應率已足夠進行分析。  
+2. 主分析時建議優先使用較穩定的累積雨量欄位，例如：
+   - `HOUR_3`
+   - `HOUR_6`
+   不建議直接使用瞬時 `RAIN`。  
+3. 若 Kriging 結果出現負值，建議在視覺化前裁切為 0。  
+4. 四方法比較圖建議使用一致的色階範圍，才方便比較不同方法的差異。  
+5. 若要在圖上疊加縣市界底圖，請先確認底圖已轉為 `EPSG:3826`。  
+6. Variogram summary table 與 variogram comparison figure 建議後續再補齊，以符合 Week 6 作業完整要求。
 
 ---
 
-## 📈 Future Enhancements
+## 十、可延伸的期末專題方向
 
-Potential improvements for subsequent versions:
+本流程也適合延伸成期末專題，例如：
 
-### Automated Features
-- Automatic event time selection algorithms
-- Dynamic variogram model optimization
-- Integrated quality control metrics
-- Batch processing capabilities
-
-### Advanced Analysis
-- Machine learning hyperparameter tuning
-- Ensemble interpolation methods
-- Temporal interpolation analysis
-- Cross-validation frameworks
-
-### Visualization Enhancements
-- Interactive web-based maps
-- 3D rainfall surface visualization
-- Animated rainfall evolution
-- Real-time dashboard integration
+- 不同降雨事件下空間預測方法比較
+- 颱風與豪雨事件之降雨場差異分析
+- 降雨空間預測在避難所風險評估上的應用
+- 結合地形、河川與降雨的防災決策支援分析
 
 ---
 
-## 📞 Support
+## 十一、建議檔案清單
 
-For questions or issues regarding this workflow:
-1. Check the notebook comments for detailed explanations
-2. Verify input data format and structure
-3. Ensure all required packages are installed
-4. Review the troubleshooting section in each notebook
-
----
-
-## 📄 License
-
-This project is part of the ARIA (Advanced Rainfall Interpolation Analysis) framework. Please refer to the main repository for licensing information.
+- `prework_prepare_rainfall_data.ipynb`
+- `Week6_Shootout_v2.ipynb`
+- `fungwong_202511.json`
+- 2022 年每日雨量 CSV
+- （選用）`COUNTY_MOI_1090820.shp`
 
 ---
 
-**Last Updated**: April 2026
-**Version**: ARIA_V4
-**Maintainer**: ARIA Development Team
+## 十二、備註
+
+本 README 是依照目前兩份 Notebook 的流程整理而成。  
+若後續有新增以下內容，建議同步更新 README：
+
+- variogram comparison figure
+- 自動存圖功能
+- 底圖疊加
+- 自動挑選最佳事件時刻的邏輯
