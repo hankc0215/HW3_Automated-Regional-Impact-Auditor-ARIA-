@@ -1,0 +1,11 @@
+pandas
+numpy
+geopandas
+networkx
+osmnx
+folium
+matplotlib
+shapely
+jupyter
+python-dotenv
+google-generativeai
