@@ -1,0 +1,65 @@
+You are the Chief of Operations at the Hualien County Disaster Prevention Command Center, writing a brief for the county magistrate.
+
+Write a 250-word operational brief covering:
+1. Three-act timeline — what the imagery proves
+2. The pre-breach warning window (Jul 21 to Sep 23, 64 days)
+3. Coverage gap — why did W3/W7 miss Guangfu?
+4. Next-24-hour orders: priority clearance, shelter resupply, UAV tasking
+5. One concrete suggestion to extend ARIA before the next barrier-lake event
+
+IMPACT TABLE:
+                  Asset               Type            Location W4 Terrain Risk W7 Centrality Rank Barrier Lake Hit (Y/N) Landslide Hit (Y/N) Debris Flow Hit (Y/N) Notes  debris_sort  landslide_sort  risk_sort
+               富民社區活動中心         W3 Shelter 334114.1, 2608038.2                                                         N                   Y                     N                  0               1          0
+               光復自強外役監獄         W3 Shelter 338021.9, 2610619.2                                                         N                   Y                     N                  0               1          0
+                   大富國小         W3 Shelter 335829.2, 2611673.6                                                         N                   Y                     N                  0               1          0
+                 大興活動中心         W3 Shelter 336198.9, 2614604.4                                                         N                   Y                     N                  0               1          0
+                 砂荖活動中心         W3 Shelter 342023.9, 2615437.2                                                         N                   Y                     N                  0               1          0
+                  太巴塱國小         W3 Shelter 341760.2, 2617455.7                                                         N                   Y                     N                  0               1          0
+                 大同活動中心         W3 Shelter 339989.2, 2617829.5                                                         N                   Y                     N                  0               1          0
+                  光復鄉公所         W3 Shelter 339211.3, 2618513.6                                                         N                   Y                     N                  0               1          0
+                   光復國中         W3 Shelter 339365.6, 2618633.7                                                         N                   Y                     N                  0               1          0
+              馬太鞍社區活動中心         W3 Shelter 337051.4, 2621483.7                                                         N                   Y                     N                  0               1          0
+                萬榮鄉立幼兒園         W3 Shelter 338394.8, 2622993.3                                                         N                   Y                     N                  0               1          0
+               鳳信社區活動中心         W3 Shelter 341334.3, 2625168.6                                                         N                   Y                     N                  0               1          0
+               鳳義社區活動中心         W3 Shelter 340939.9, 2627321.5                                                         N                   Y                     N                  0               1          0
+        Guangfu_Station W8 Guangfu Overlay 339234.7, 2618790.2                                  2                      N                   Y                     N                  0               1          0
+     Guangfu_Elementary W8 Guangfu Overlay 339281.9, 2618446.4                                  1                      N                   Y                     N                  0               1          0
+Guangfu_Township_Office W8 Guangfu Overlay 338975.5, 2618405.5                                  1                      N                   Y                     N                  0               1          0
+       Foxu_Debris_Zone W8 Guangfu Overlay 339480.1, 2617912.6                                  3                      N                   Y                     N                  0               1          0
+              八里灣基督長老教會         W3 Shelter 345477.4, 2607227.0                                                         N                   N                     N                  0               0          0
+               馬遠社區活動中心         W3 Shelter 332897.9, 2608336.4                                                         N                   N                     N                  0               0          0
+                 馬遠國民小學         W3 Shelter 332834.7, 2608337.6                                                         N                   N                     N                  0               0          0
+               富源社區活動中心         W3 Shelter 334261.2, 2608402.0                                                         N                   N                     N                  0               0          0
+                 富源消防分隊         W3 Shelter 334312.4, 2608423.6                                                         N                   N                     N                  0               0          0
+               富興社區活動中心         W3 Shelter 335470.7, 2608842.4                                                         N                   N                     N                  0               0          0
+                花東山琉璃禪寺         W3 Shelter 338400.9, 2610747.9                                                         N                   N                     N                  0               0          0
+                   大興國小         W3 Shelter 336605.1, 2614433.7                                                         N                   N                     N                  0               0          0
+                 馬佛活動中心         W3 Shelter 339803.2, 2614830.2                                                         N                   N                     N                  0               0          0
+                光復鄉立托兒所         W3 Shelter 338690.3, 2616603.4                                                         N                   N                     N                  0               0          0
+                 西南活動中心         W3 Shelter 341860.1, 2617266.3                                                         N                   N                     N                  0               0          0
+                   東富國小         W3 Shelter 345267.2, 2620120.3                                                         N                   N                     N                  0               0          0
+               明利社區活動中心         W3 Shelter 338140.7, 2622449.9                                                         N                   N                     N                  0               0          0
+               長橋社區活動中心         W3 Shelter 338873.2, 2622980.7                                                         N                   N                     N                  0               0          0
+               萬榮社區活動中心         W3 Shelter 337922.4, 2623510.9                                                         N                   N                     N                  0               0          0
+                 森榮里辦公處         W3 Shelter 336609.2, 2623880.9                                                         N                   N                     N                  0               0          0
+                   樂活會館         W3 Shelter 341954.6, 2626437.4                                                         N                   N                     N                  0               0          0
+                鳳林鎮藝文中心         W3 Shelter 341737.7, 2626626.1                                                         N                   N                     N                  0               0          0
+                鳳林國中進德堂         W3 Shelter 341902.0, 2626735.0                                                         N                   N                     N                  0               0          0
+                  鳳林鎮公所         W3 Shelter 342208.8, 2626820.3                                                         N                   N                     N                  0               0          0
+             鳳禮,鳳智里活動中心         W3 Shelter 342128.8, 2626965.1                                                         N                   N                     N                  0               0          0
+               鳳仁社區活動中心         W3 Shelter 342235.3, 2627384.8                                                         N                   N                     N                  0               0          0
+                鳳仁國小羽球館         W3 Shelter 342216.6, 2627540.1                                                         N                   N                     N                  0               0          0
+             大榮2村社區活動中心         W3 Shelter 343828.4, 2627644.5                                                         N                   N                     N                  0               0          0
+             大榮1村社區活動中心         W3 Shelter 343828.4, 2627644.5                                                         N                   N                     N                  0               0          0
+    Mataian_Hwy9_Bridge W8 Guangfu Overlay 337816.0, 2615051.5                                  1                      N                   N                     N                  0               0          0
+
+THREE-ACT DETECTION SUMMARY:
+- Act 1 (Pre, S2A_MSIL2A_20250615T023141_R046_T51QUG_20250615T070417): forested Matai'an valley, no lake
+- Act 2 (Mid, S2C_MSIL2A_20250911T022551_R046_T51QUG_20250911T055914): barrier lake 0.599 km² detected
+- Act 3 (Post, S2B_MSIL2A_20251016T022559_R046_T51QUG_20251016T042804): lake drained; landslide source 23.607 km²; debris flow footprint 14.094 km²
+
+ARIA CHAIN SUMMARY:
+- W3 shelters in study area: 38
+- W7 bottlenecks in study area: 0
+- W8 Guangfu overlay nodes in study area: 5
+- Guangfu nodes hit: 4
