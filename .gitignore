@@ -40,13 +40,14 @@ MANIFEST
 Thumbs.db
 
 # Output files (keep structure but ignore contents)
-outputs/*.csv
-outputs/*.json
-outputs/*.txt
-outputs/*.png
-outputs/*.jpg
-outputs/*.jpeg
-outputs/*.pdf
+# Remove this section to allow outputs folder to be uploaded
+# outputs/*.csv
+# outputs/*.json
+# outputs/*.txt
+# outputs/*.png
+# outputs/*.jpg
+# outputs/*.jpeg
+# outputs/*.pdf
 
 # Temporary files
 *.tmp
