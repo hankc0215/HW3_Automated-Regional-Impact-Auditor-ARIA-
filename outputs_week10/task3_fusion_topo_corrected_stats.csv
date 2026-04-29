@@ -1,0 +1,5 @@
+class,classification,pixels,area_km2,percent_of_aoi
+0,No Detection,2370003,237.0003,93.52001799370221
+1,Optical Only,153044,15.304400000000001,6.039096842420942
+2,SAR Only / Cloudy or Review,1626,0.1626,0.06416175391244643
+3,High Confidence,9547,0.9547,0.37672340996440723

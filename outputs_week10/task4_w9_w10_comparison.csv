@@ -1,0 +1,5 @@
+Metric,W9 (Optical Only),W10 (Fused),Improvement
+Total detected flood area,24.732 km²,22.728 km²,+-2.003 km²
+Cloud-covered area analyzed,0.000 km²,2.204 km²,SAR provides all-weather coverage
+False positives removed by topographic / quality audit,54.494 km² phantom-water artifacts before SCL masking,6.307 km² steep-slope SAR detections removed,Quality audit reduces sensor-specific false positives
+Confidence levels,3-zone,4-class,Finer granularity
