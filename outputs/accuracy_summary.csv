@@ -1,0 +1,7 @@
+﻿metric,value
+Training accuracy,0.9357142857142857
+Test accuracy,0.8371428571428572
+OOB accuracy,0.8464285714285714
+Macro F1,0.8369348659003831
+Weighted F1,0.8369348659003831
+Weighted - Macro F1,0.0
