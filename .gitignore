@@ -1,0 +1,43 @@
+# Python cache and local environments
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# Jupyter and notebook runtime state
+*.nbconvert.ipynb
+.jupyter/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Local secrets and credentials
+.env
+.env.*
+*.json.key
+*.pem
+*.p12
+credentials.json
+token.json
+
+# Large geospatial exports generated outside this exercise
+*.tif
+*.tiff
+*.geotiff
+*.nc
+*.hdf
+*.h5
+*.zip
+*.tar
+*.tar.gz
+
+# Temporary output folders
+tmp/
+temp/
+cache/

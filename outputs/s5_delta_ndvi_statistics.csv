@@ -1,0 +1,4 @@
+﻿change_type,band,mean_delta_NDVI,std_delta_NDVI,damaged_area_km2_delta_lt_minus_0_15
+EQ damage: Phase 2 - Phase 1,delta_NDVI,0.027212904695322324,0.06882099744166155,4.121028010608149
+Dam change: Phase 3 - Phase 2,delta_NDVI_dam,-0.09106478532964149,0.1706189002571116,40.17042432692248
+Total change: Phase 3 - Phase 1,delta_NDVI_total,-0.06375107983106933,0.16641470185882842,32.71395324985446

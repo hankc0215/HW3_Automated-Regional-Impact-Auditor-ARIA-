@@ -1,0 +1,2 @@
+﻿metric,area_km2,rule
+Area detected by BOTH optical delta NDVI and SAR delta VV,0.25974705622702204,delta_NDVI < -0.15 AND abs(delta_VV) > 2 dB
