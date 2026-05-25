@@ -1,0 +1,4 @@
+﻿phase,threshold,loss_area_ha
+Earthquake impact: post_eq - pre_eq,-0.15,7740.145333253797
+Post-dam change: post_dam - post_eq,-0.15,6257.67728102509
+Total change: post_dam - pre_eq,-0.15,6839.039620784917
