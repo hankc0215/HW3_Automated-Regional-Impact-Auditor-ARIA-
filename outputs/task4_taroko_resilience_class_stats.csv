@@ -1,0 +1,5 @@
+﻿class,label,area_ha,percent
+1,continued degradation (RR < 0),3129.0316925897896,20.1256982813659
+2,slow / limited recovery (0–0.5),5821.063038886643,37.440642955099015
+3,partial recovery (0.5–1.0),3693.410319923524,23.755739484550116
+4,full recovery or exceeded baseline (RR ≥ 1),2903.9390613189344,18.677919278984962
